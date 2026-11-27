@@ -65,7 +65,7 @@
     }
     .titlebar {
       display: flex; align-items: center; gap: 12px;
-      height: 36px; padding: 0 14px;
+      height: 30px; padding: 0 14px;
       background: var(--bar);
       border-bottom: 1px solid var(--line);
       font-family: var(--mono); font-size: .75rem; color: var(--muted);
@@ -78,10 +78,10 @@
 
     /* ── 왼쪽: 소개 ───────────────────────── */
     .left { position: sticky; top: 24px; display: grid; gap: 14px; }
-    .intro-body { padding: 20px 24px 22px; }
-    .head { display: grid; grid-template-columns: 90px 1fr; gap: 16px; align-items: center; }
+    .intro-body { padding: 16px 24px 20px; }
+    .head { display: grid; grid-template-columns: 120px 1fr; gap: 18px; align-items: center; }
     .photo {
-      width: 90px; height: 120px; /* 원본 비율 3:4 그대로 */
+      width: 120px; height: 160px; /* 원본 비율 3:4 그대로 (파일 600×800) */
       border-radius: 16px;
       object-fit: cover; object-position: center top;
       background: var(--accent-soft);
@@ -131,7 +131,7 @@
       display: flex; align-items: center; justify-content: center; gap: 8px;
       background: var(--ink); color: #fff;
       font-weight: 700; text-decoration: none;
-      padding: 12px; border-radius: 12px;
+      padding: 10px; border-radius: 12px;
       transition: background .2s ease;
     }
     .contact:hover { background: var(--accent); }
@@ -146,13 +146,13 @@
     /* 희망 역할 */
     .role-body { padding: 12px 20px 14px; }
     .role-body h2 { font-size: 1.05rem; font-weight: 800; letter-spacing: -0.02em; }
-    .roles { list-style: none; display: grid; gap: 6px; margin-top: 10px; }
+    .roles { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 8px; }
     .roles li {
-      display: grid; grid-template-columns: 76px 1fr; gap: 10px; align-items: baseline;
+      display: grid; gap: 0;
       border: 1px solid var(--line); border-radius: 10px;
       padding: 6px 12px; background: var(--bar);
     }
-    .roles li.main { border-color: var(--accent); background: var(--accent-soft); }
+    .roles li.main { grid-column: 1 / -1; grid-template-columns: 112px 1fr; gap: 10px; align-items: baseline; border-color: var(--accent); background: var(--accent-soft); }
     .roles b { font-size: .9rem; }
     .roles span { font-size: .82rem; color: var(--muted); }
     .roles li.main span { color: var(--accent-ink); }
@@ -282,7 +282,7 @@
       </div>
       <div class="intro-body">
         <div class="head">
-          <img class="photo" src="images/profile.jpg" alt="김수현 프로필 사진" width="90" height="120">
+          <img class="photo" src="images/profile.jpg" alt="김수현 프로필 사진" width="120" height="160">
           <div>
             <p class="status">팀원 찾는 중</p>
             <h1 id="name">김수현</h1>
@@ -296,7 +296,7 @@
           <div><dt>전공</dt><dd>소프트웨어 보안</dd></div>
           <div>
             <dt>자격증</dt>
-            <dd class="chips"><span class="chip">SQLD</span><span class="chip">정보처리기사 필기 합격</span></dd>
+            <dd class="chips"><span class="chip">SQLD</span><span class="chip">정보처리기사 필기</span></dd>
           </div>
           <div><dt>졸업작품</dt><dd>1인가구 복지 웹사이트 (팀장)</dd></div>
           <div>
@@ -320,12 +320,12 @@
     <!-- 희망 역할 -->
     <section class="window" aria-labelledby="role-title">
       <div class="role-body">
-        <p class="kicker">// ROLE</p>
+        <p class="kicker">// ROLE · 목표: 보안 솔루션 엔지니어</p>
         <h2 id="role-title">이런 역할을 맡고 싶어요</h2>
         <ul class="roles">
-          <li class="main"><b>PM · 팀장</b><span>일정·역할 정리, 회의 진행</span></li>
-          <li><b>DB 설계</b><span>SQLD 기반 테이블·쿼리 설계</span></li>
-          <li><b>보안 점검</b><span>전공 살려 취약점 체크</span></li>
+          <li class="main"><b>보안 솔루션 구축</b><span>탐지 룰·관제 도구 설정과 운영</span></li>
+          <li><b>보안 점검</b><span>취약점 진단·대응</span></li>
+          <li><b>문서화</b><span>요구사항·설계서·보고서</span></li>
         </ul>
       </div>
     </section>
