@@ -1,0 +1,15 @@
+# 로컬 도구 설정 (저장소에 올리지 않음)
+.claude/
+.vscode/
+
+# 비밀값
+.env
+.env.*
+
+# 원본 이미지 (마스킹 전 파일은 여기에 두기)
+originals/
+
+# OS 파일
+Thumbs.db
+desktop.ini
+.DS_Store

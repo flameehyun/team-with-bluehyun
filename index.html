@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>김수현 | 함께할 팀원을 찾습니다</title>
+  <meta name="description" content="부트캠프 동기들에게 소개하는 김수현의 팀플 PR 페이지">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&display=swap">
+  <style>
+    :root {
+      --bg: #eef1f6;
+      --grid: rgba(35, 72, 214, .06);
+      --card: #ffffff;
+      --ink: #0f1b2d;
+      --muted: #566176;
+      --accent: #2348d6;
+      --accent-ink: #1a37a8;
+      --accent-soft: #eaeffd;
+      --line: #e3e8f0;
+      --bar: #f6f8fb;
+      --ok: #15803d;
+      --focus: #b45309;
+      --shadow: 0 1px 2px rgba(15, 27, 45, .04), 0 8px 24px rgba(15, 27, 45, .06);
+      --radius: 16px;
+      --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+      /* 모눈 배경: 에디터·설계도 느낌을 아주 옅게 */
+      background-color: var(--bg);
+      background-image:
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+      background-size: 28px 28px;
+      color: var(--ink);
+      line-height: 1.6;
+      letter-spacing: -0.01em;
+      min-height: 100vh;
+      word-break: keep-all;
+    }
+    .mono { font-family: var(--mono); letter-spacing: 0; }
+
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 32px;
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    /* 창(window) 모양 카드 공통 */
+    .window {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .titlebar {
+      display: flex; align-items: center; gap: 12px;
+      height: 36px; padding: 0 14px;
+      background: var(--bar);
+      border-bottom: 1px solid var(--line);
+      font-family: var(--mono); font-size: .75rem; color: var(--muted);
+    }
+    .dots { display: flex; gap: 6px; }
+    .dots i { width: 10px; height: 10px; border-radius: 50%; background: #d5dbe5; }
+    .dots i:nth-child(1) { background: #f87171; }
+    .dots i:nth-child(2) { background: #fbbf24; }
+    .dots i:nth-child(3) { background: #34d399; }
+
+    /* ── 왼쪽: 소개 ───────────────────────── */
+    .left { position: sticky; top: 24px; display: grid; gap: 14px; }
+    .intro-body { padding: 20px 24px 22px; }
+    .head { display: grid; grid-template-columns: 88px 1fr; gap: 16px; align-items: center; }
+    .photo {
+      width: 88px; height: 88px;
+      border-radius: 20px;
+      object-fit: cover; object-position: center 18%;
+      background: var(--accent-soft);
+      border: 1px solid var(--line);
+    }
+    .status {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: var(--mono); font-size: .72rem; font-weight: 700;
+      color: var(--ok);
+    }
+    .status::before {
+      content: ""; width: 7px; height: 7px; border-radius: 50%;
+      background: var(--ok); box-shadow: 0 0 0 3px rgba(21, 128, 61, .15);
+    }
+    h1 { font-size: 1.9rem; font-weight: 800; line-height: 1.2; letter-spacing: -0.03em; margin-top: 2px; }
+    .meta-line { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: .92rem; margin-top: 4px; }
+    .mbti {
+      font-family: var(--mono); font-size: .72rem; font-weight: 700;
+      color: var(--accent-ink); background: var(--accent-soft);
+      padding: 2px 8px; border-radius: 6px;
+    }
+    .one-line {
+      margin-top: 14px;
+      padding: 10px 14px;
+      border-left: 3px solid var(--accent);
+      background: linear-gradient(90deg, var(--accent-soft), transparent);
+      border-radius: 0 10px 10px 0;
+      font-size: 1rem; font-weight: 600; line-height: 1.55;
+    }
+
+    .info { margin-top: 14px; display: grid; gap: 8px; }
+    .info > div { display: grid; grid-template-columns: 64px 1fr; gap: 12px; align-items: baseline; }
+    .info dt { font-family: var(--mono); font-size: .72rem; font-weight: 700; color: var(--muted); text-transform: uppercase; }
+    .info dd { font-size: .93rem; font-weight: 500; }
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    .chip {
+      font-size: .8rem; font-weight: 600;
+      padding: 2px 9px; border-radius: 6px;
+      border: 1px solid var(--line); background: var(--bar);
+    }
+    .awards { list-style: none; display: grid; gap: 2px; }
+    .awards li { display: flex; align-items: center; gap: 6px; font-weight: 600; }
+    .awards li::before { content: "🏆"; font-size: .78rem; }
+
+    .contact {
+      margin-top: 18px;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--ink); color: #fff;
+      font-weight: 700; text-decoration: none;
+      padding: 12px; border-radius: 12px;
+      transition: background .2s ease;
+    }
+    .contact:hover { background: var(--accent); }
+    .contact svg { width: 18px; height: 18px; }
+
+    /* ── 오른쪽 ────────────────────────────── */
+    .right { display: grid; gap: 14px; }
+    .kicker { font-family: var(--mono); font-size: .75rem; font-weight: 700; color: var(--accent-ink); }
+    .sec-head h2 { font-size: 1.45rem; font-weight: 800; letter-spacing: -0.03em; }
+    .sec-head .hint { color: var(--muted); font-size: .9rem; }
+
+    /* 희망 역할 */
+    .role-body { padding: 14px 20px 16px; }
+    .role-body h2 { font-size: 1.05rem; font-weight: 800; letter-spacing: -0.02em; }
+    .roles { list-style: none; display: grid; gap: 6px; margin-top: 10px; }
+    .roles li {
+      display: grid; grid-template-columns: 76px 1fr; gap: 10px; align-items: baseline;
+      border: 1px solid var(--line); border-radius: 10px;
+      padding: 6px 12px; background: var(--bar);
+    }
+    .roles li.main { border-color: var(--accent); background: var(--accent-soft); }
+    .roles b { font-size: .9rem; }
+    .roles span { font-size: .82rem; color: var(--muted); }
+    .roles li.main span { color: var(--accent-ink); }
+
+    /* 펼침 카드 공통 */
+    .cards { display: grid; gap: 8px; margin-top: 8px; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+    .card:hover { border-color: #c9d3e6; }
+    .card:has([aria-expanded="true"]) { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft), var(--shadow); }
+    .card h3, .card h2.inline { font-size: 1rem; font-weight: inherit; letter-spacing: inherit; }
+
+    .toggle {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 42px 1fr 32px;
+      align-items: center;
+      gap: 14px;
+      background: none; border: none;
+      padding: 12px 18px;
+      font: inherit; color: inherit; text-align: left;
+      cursor: pointer;
+      border-radius: var(--radius);
+    }
+    .num {
+      width: 42px; height: 42px; border-radius: 12px;
+      display: grid; place-items: center;
+      background: var(--accent-soft); color: var(--accent-ink);
+      font-family: var(--mono); font-weight: 700; font-size: .9rem;
+      transition: background .2s ease, color .2s ease;
+    }
+    .toggle[aria-expanded="true"] .num { background: var(--accent); color: #fff; }
+    .toggle .title { display: block; font-size: 1.05rem; font-weight: 700; letter-spacing: -0.02em; }
+    .toggle .sub { display: block; color: var(--muted); font-size: .86rem; margin-top: 1px; }
+    .chev {
+      width: 32px; height: 32px; border-radius: 50%;
+      display: grid; place-items: center;
+      border: 1px solid var(--line); color: var(--ink);
+      transition: transform .25s ease, background .2s ease;
+    }
+    .chev svg { width: 15px; height: 15px; }
+    .toggle:hover .chev { background: var(--bar); }
+    .toggle[aria-expanded="true"] .chev { transform: rotate(180deg); background: var(--ink); color: #fff; border-color: var(--ink); }
+
+    /* 약점과 다짐 */
+    .known-body { padding: 12px 18px 14px; }
+    .known-body h2 { font-size: 1rem; font-weight: 800; letter-spacing: -0.02em; margin-top: 2px; }
+    .fix { font-size: .88rem; color: var(--muted); margin-top: 4px; }
+    .fix-tag { color: var(--ok); font-weight: 700; margin-right: 4px; }
+    .fix-tag.feat { color: var(--accent-ink); }
+    .fix + .fix { margin-top: 2px; }
+    /* 장점 제목과 안내 문구를 한 줄에 */
+    .sec-head { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 12px; }
+    .sec-head .kicker { flex-basis: 100%; }
+
+    /* 아이디어 카드: 터미널 느낌 */
+    .card.idea .num { background: var(--ink); color: #7dd3fc; }
+    .card.idea .toggle[aria-expanded="true"] .num { background: var(--accent); color: #fff; }
+    .card.idea .tag-new {
+      font-family: var(--mono); font-size: .68rem; font-weight: 700;
+      color: var(--accent-ink); background: var(--accent-soft);
+      padding: 1px 6px; border-radius: 4px; margin-left: 6px; vertical-align: 2px;
+    }
+
+    .detail { padding: 0 18px 18px 74px; }
+    .detail:not([hidden]) { animation: reveal .25s ease; }
+    @keyframes reveal { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+
+    .steps { position: relative; display: grid; gap: 10px; }
+    .steps::before {
+      content: ""; position: absolute; left: 21px; top: 12px; bottom: 12px;
+      width: 2px; background: var(--line);
+    }
+    .steps > div { position: relative; display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: start; }
+    .steps dt {
+      font-size: .75rem; font-weight: 800; text-align: center;
+      padding: 3px 0; border-radius: 7px;
+      background: var(--card); border: 1px solid var(--line); color: var(--accent-ink);
+    }
+    .steps > div:last-child dt { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .steps dd { font-size: .92rem; padding-top: 1px; }
+
+    .proof {
+      margin-top: 12px;
+      display: flex; gap: 10px; align-items: flex-start;
+      padding: 10px 12px;
+      border: 1px dashed #c7d1e3; border-radius: 10px;
+      background: var(--bar);
+      font-size: .86rem; color: var(--muted);
+    }
+    .proof svg { flex: 0 0 auto; width: 16px; height: 16px; margin-top: 3px; color: var(--accent-ink); }
+    .proof strong { color: var(--ink); }
+
+    /* ── 키보드 초점 표시 ──────────────────── */
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+
+    /* ── 움직임 줄이기 설정 존중 ───────────── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+    }
+
+    /* ── 좁은 화면 ─────────────────────────── */
+    @media (max-width: 860px) {
+      .wrap { grid-template-columns: 1fr; padding: 16px 16px 40px; gap: 22px; }
+      .left { position: static; }
+      .intro-body { padding: 20px; }
+      .toggle { grid-template-columns: 38px 1fr 30px; gap: 12px; padding: 14px; }
+      .num { width: 38px; height: 38px; }
+      .chev { width: 30px; height: 30px; }
+      .detail { padding: 0 14px 16px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="left">
+    <!-- 소개 -->
+    <section class="intro window" aria-labelledby="name">
+      <div class="titlebar" aria-hidden="true">
+        <span class="dots"><i></i><i></i><i></i></span>
+        <span>~/kim-suhyun/profile</span>
+      </div>
+      <div class="intro-body">
+        <div class="head">
+          <img class="photo" src="images/profile.jpg" alt="김수현 프로필 사진" width="88" height="88">
+          <div>
+            <p class="status">팀원 찾는 중</p>
+            <h1 id="name">김수현</h1>
+            <p class="meta-line"><span>26살</span><span aria-hidden="true">·</span><span class="mbti">ESTJ</span></p>
+          </div>
+        </div>
+
+        <p class="one-line">일정과 역할을 먼저 정리하고, 끝까지 책임지는 팀원입니다.</p>
+
+        <dl class="info">
+          <div><dt>전공</dt><dd>소프트웨어 보안</dd></div>
+          <div>
+            <dt>자격증</dt>
+            <dd class="chips"><span class="chip">SQLD</span><span class="chip">정보처리기사 필기 합격</span></dd>
+          </div>
+          <div><dt>졸업작품</dt><dd>1인가구 복지 웹사이트 (팀장)</dd></div>
+          <div>
+            <dt>수상</dt>
+            <dd>
+              <ul class="awards">
+                <li>캡스톤디자인 최우수상 · 인기상</li>
+                <li>현장실습 체험수기 최우수상</li>
+              </ul>
+            </dd>
+          </div>
+        </dl>
+
+        <a class="contact" href="mailto:popo010517@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          이메일로 연락하기
+        </a>
+      </div>
+    </section>
+
+    <!-- 희망 역할 -->
+    <section class="window" aria-labelledby="role-title">
+      <div class="role-body">
+        <p class="kicker">// ROLE</p>
+        <h2 id="role-title">이런 역할을 맡고 싶어요</h2>
+        <ul class="roles">
+          <li class="main"><b>PM · 팀장</b><span>일정·역할 정리, 회의 진행</span></li>
+          <li><b>DB 설계</b><span>SQLD 기반 테이블·쿼리 설계</span></li>
+          <li><b>보안 점검</b><span>전공 살려 취약점 체크</span></li>
+        </ul>
+      </div>
+    </section>
+    </div>
+
+    <div class="right">
+
+      <!-- 장점 -->
+      <section aria-labelledby="strengths-title">
+        <div class="sec-head">
+          <p class="kicker">// WHY ME</p>
+          <h2 id="strengths-title">함께하면 좋은 이유 3가지</h2>
+          <p class="hint">카드를 누르면 상황·행동·결과와 근거가 펼쳐집니다.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <h3>
+              <button class="toggle" type="button" aria-expanded="false" aria-controls="detail-1">
+                <span class="num" aria-hidden="true">01</span>
+                <span>
+                  <span class="title">팀을 이끌어 본 경험</span>
+                  <span class="sub">개발 동아리 단장, 프로젝트 팀장 3회</span>
+                </span>
+                <span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+              </button>
+            </h3>
+            <div class="detail" id="detail-1" hidden>
+              <dl class="steps">
+                <div><dt>상황</dt><dd>개발 동아리 BCC 단장(2022.05~2023.12), 캡스톤디자인·K-패스 UX 리디자인 프로젝트 팀장</dd></div>
+                <div><dt>행동</dt><dd>[채우기] 팀장으로서 일정·역할을 어떻게 나눴는지 한 문장</dd></div>
+                <div><dt>결과</dt><dd>[채우기] 예: 동아리 ○명 운영, 프로젝트 3개 모두 마감 내 완성</dd></div>
+              </dl>
+              <p class="proof">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+                <span><strong>근거</strong> 동아리 단장 1년 8개월 · 프로젝트 팀장 3회</span>
+              </p>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>
+              <button class="toggle" type="button" aria-expanded="false" aria-controls="detail-2">
+                <span class="num" aria-hidden="true">02</span>
+                <span>
+                  <span class="title">결과로 증명하는 사람</span>
+                  <span class="sub">캡스톤 최우수상·인기상, 현장실습 체험수기 최우수상</span>
+                </span>
+                <span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+              </button>
+            </h3>
+            <div class="detail" id="detail-2" hidden>
+              <dl class="steps">
+                <div><dt>상황</dt><dd>졸업작품 '1인가구 복지 웹사이트'를 팀장으로 진행 ([채우기] ○명 팀, ○개월)</dd></div>
+                <div><dt>행동</dt><dd>[채우기] 기능 우선순위·일정을 어떻게 정리했는지 한 문장</dd></div>
+                <div><dt>결과</dt><dd>캡스톤디자인 최우수상과 인기상 동시 수상, 현장실습 체험수기 공모전 최우수상</dd></div>
+              </dl>
+              <p class="proof">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+                <span><strong>근거</strong> 상장 3건 (이미지는 학교 이름·로고·발급번호 가린 뒤 추가 예정)</span>
+              </p>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>
+              <button class="toggle" type="button" aria-expanded="false" aria-controls="detail-3">
+                <span class="num" aria-hidden="true">03</span>
+                <span>
+                  <span class="title">약속을 지키는 성실함</span>
+                  <span class="sub">우등 졸업·성적 장학금, 봉사활동 3년, 아르바이트 3년</span>
+                </span>
+                <span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+              </button>
+            </h3>
+            <div class="detail" id="detail-3" hidden>
+              <dl class="steps">
+                <div><dt>상황</dt><dd>학업, 아르바이트, 봉사활동을 함께 해야 했음</dd></div>
+                <div><dt>행동</dt><dd>[채우기] 일정을 어떻게 관리했는지 한 문장</dd></div>
+                <div><dt>결과</dt><dd>병결 외 지각·결석 없음, 성적 장학금, 우등 졸업, 봉사활동 3년, 아르바이트 3년</dd></div>
+              </dl>
+              <p class="proof">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+                <span><strong>근거</strong> 장학·우등 졸업·봉사 확인서 (생년월일·학교 이름 가린 뒤 추가 예정)</span>
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 약점과 다짐 -->
+      <section class="window known" aria-labelledby="known-title">
+        <div class="known-body">
+          <p class="kicker">// KNOWN ISSUE &amp; COMMIT</p>
+          <h2 id="known-title">약점은 솔직하게, 다짐은 확실하게</h2>
+          <p class="fix"><span class="mono fix-tag">fix:</span> 발표는 아직 약점 → 대본 미리 쓰기 + 리허설 3회 + 청심환 💊 (면접 준비하며 연습 효과를 경험했어요)</p>
+          <p class="fix"><span class="mono fix-tag feat">feat:</span> 가까이 살아서 오프라인 모임도 부담 없어요. 일찍 오고 늦게까지 불태울게요 🔥</p>
+        </div>
+      </section>
+
+      <!-- 구상 중인 아이디어 (펼쳐야 보임) -->
+      <section class="card idea">
+        <h2 class="inline">
+          <button class="toggle" type="button" aria-expanded="false" aria-controls="detail-idea">
+            <span class="num" aria-hidden="true">&gt;_</span>
+            <span>
+              <span class="title">지금 구상 중인 아이디어<span class="tag-new">DRAFT</span></span>
+              <span class="sub">Zero Trust 보안 × AI 자동화 · 상세 기획은 합류하면 공유</span>
+            </span>
+            <span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+          </button>
+        </h2>
+        <div class="detail" id="detail-idea" hidden>
+          <dl class="steps">
+            <div><dt>문제</dt><dd>"한 번 로그인하면 끝까지 믿는" 기존 보안의 빈틈</dd></div>
+            <div><dt>방향</dt><dd>Zero Trust 원칙에 AI 자동화를 더해, 직접 공격·탐지·대응까지 시연하는 프로젝트</dd></div>
+            <div><dt>공유</dt><dd>기획서는 함께하기로 한 분께 이메일로 보내 드려요</dd></div>
+          </dl>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    document.querySelectorAll('.toggle').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var expanded = btn.getAttribute('aria-expanded') === 'true';
+        var detail = document.getElementById(btn.getAttribute('aria-controls'));
+        btn.setAttribute('aria-expanded', String(!expanded));
+        detail.hidden = expanded;
+      });
+    });
+  </script>
+</body>
+</html>
