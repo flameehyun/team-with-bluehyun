@@ -79,11 +79,11 @@
     /* ── 왼쪽: 소개 ───────────────────────── */
     .left { position: sticky; top: 24px; display: grid; gap: 14px; }
     .intro-body { padding: 20px 24px 22px; }
-    .head { display: grid; grid-template-columns: 88px 1fr; gap: 16px; align-items: center; }
+    .head { display: grid; grid-template-columns: 90px 1fr; gap: 16px; align-items: center; }
     .photo {
-      width: 88px; height: 88px;
-      border-radius: 20px;
-      object-fit: cover; object-position: center 18%;
+      width: 90px; height: 120px; /* 원본 비율 3:4 그대로 */
+      border-radius: 16px;
+      object-fit: cover; object-position: center top;
       background: var(--accent-soft);
       border: 1px solid var(--line);
     }
@@ -104,7 +104,7 @@
       padding: 2px 8px; border-radius: 6px;
     }
     .one-line {
-      margin-top: 14px;
+      margin-top: 12px;
       padding: 10px 14px;
       border-left: 3px solid var(--accent);
       background: linear-gradient(90deg, var(--accent-soft), transparent);
@@ -112,7 +112,7 @@
       font-size: 1rem; font-weight: 600; line-height: 1.55;
     }
 
-    .info { margin-top: 14px; display: grid; gap: 8px; }
+    .info { margin-top: 12px; display: grid; gap: 6px; }
     .info > div { display: grid; grid-template-columns: 64px 1fr; gap: 12px; align-items: baseline; }
     .info dt { font-family: var(--mono); font-size: .72rem; font-weight: 700; color: var(--muted); text-transform: uppercase; }
     .info dd { font-size: .93rem; font-weight: 500; }
@@ -127,7 +127,7 @@
     .awards li::before { content: "🏆"; font-size: .78rem; }
 
     .contact {
-      margin-top: 18px;
+      margin-top: 14px;
       display: flex; align-items: center; justify-content: center; gap: 8px;
       background: var(--ink); color: #fff;
       font-weight: 700; text-decoration: none;
@@ -144,7 +144,7 @@
     .sec-head .hint { color: var(--muted); font-size: .9rem; }
 
     /* 희망 역할 */
-    .role-body { padding: 14px 20px 16px; }
+    .role-body { padding: 12px 20px 14px; }
     .role-body h2 { font-size: 1.05rem; font-weight: 800; letter-spacing: -0.02em; }
     .roles { list-style: none; display: grid; gap: 6px; margin-top: 10px; }
     .roles li {
@@ -282,7 +282,7 @@
       </div>
       <div class="intro-body">
         <div class="head">
-          <img class="photo" src="images/profile.jpg" alt="김수현 프로필 사진" width="88" height="88">
+          <img class="photo" src="images/profile.jpg" alt="김수현 프로필 사진" width="90" height="120">
           <div>
             <p class="status">팀원 찾는 중</p>
             <h1 id="name">김수현</h1>
